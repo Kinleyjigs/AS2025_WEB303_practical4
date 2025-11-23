@@ -1,0 +1,31 @@
+_format_version: "3.0"
+
+services:
+  - name: food-catalog-service
+    url: http://food-catalog-service:8080
+    routes:
+      - name: catalog-route
+        paths: ["/api/catalog"]
+        strip_path: true
+
+  - name: order-service
+    url: http://order-service:8081
+    routes:
+      - name: orders-route
+        paths: ["/api/orders"]
+        strip_path: true
+        plugins:
+          - name: cors
+            config:
+              origins: ["*"]
+              methods: ["GET","HEAD","PUT","PATCH","POST","DELETE","OPTIONS"]
+              headers: ["Content-Type","Authorization"]
+              exposed_headers: ["Content-Type"]
+              preflight_continue: false
+              max_age: 3600
+
+  - name: cafe-ui
+    url: http://cafe-ui:80
+    routes:
+      - name: ui-route
+        paths: ["/"]
