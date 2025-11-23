@@ -80,7 +80,7 @@ Consul Service Discovery
 ### 4.1 Infrastructure & Deployment
 Screenshot 1: Docker Services Running
 
-![DOCKER running](image13.png)
+![DOCKER running](images/image13.png)
 
 - All microservices running in Docker containers
 
